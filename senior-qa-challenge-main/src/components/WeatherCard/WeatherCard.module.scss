@@ -1,0 +1,13 @@
+.weatherCard {
+  background-color: transparent;
+  background-color: #e2dacd;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #c6cacd;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0.5rem;
+  }
+}

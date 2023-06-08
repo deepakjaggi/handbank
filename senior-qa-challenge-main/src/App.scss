@@ -1,0 +1,19 @@
+body,
+html {
+  height: 100%;
+}
+
+#root {
+  background-image: url("./images/bg.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem;
+}
+
+.photo-author {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
