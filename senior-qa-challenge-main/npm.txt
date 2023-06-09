@@ -4,3 +4,17 @@ npm install react react-dom --save
 npm install cypress --save -dev
 npm start
 npx cypress open
+//click on end to end testing then continue - Cypress folder will be intiated
+//Open start testing in chrome
+//Click on Specs
+//Click on exmaples
+//Close the cypress
+
+npx cypress run --spec cypress\e2e\api_tests\handles.cy.js
+npm install -D cypress-xpath
+
+
+
+//https://api.openweathermap.org/data/2.5/weather?lat=60.2838578&lon=11.1728733&units=Metric&appid=eb8a70f875f4e4baabc1399cec36e4b6
+//https://api.openweathermap.org/data/2.5/weather?lat=52.5170365&lon=13.3888599&units=Metric&appid=eb8a70f875f4e4baabc1399cec36e4b6
+//https://api.openweathermap.org/data/2.5/weather?lat=41.1494512&lon=-8.6107884&units=Metric&appid=eb8a70f875f4e4baabc1399cec36e4b6
