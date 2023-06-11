@@ -14,6 +14,9 @@ npx cypress run --spec cypress\e2e\api_tests\handles.cy.js
 npm install -D cypress-xpath
 npm i cypress-browser-permissions --save-dev
 
+npm config set proxy http://your-proxy-url:your-proxy-port
+npm install --save-dev @types/cypress
+
 
 
 //https://api.openweathermap.org/data/2.5/weather?lat=60.2838578&lon=11.1728733&units=Metric&appid=eb8a70f875f4e4baabc1399cec36e4b6

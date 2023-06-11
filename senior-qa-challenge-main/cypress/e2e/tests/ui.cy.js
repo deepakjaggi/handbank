@@ -1,74 +1,69 @@
 /// <reference types="Cypress" />
 /// <reference types="cypress-xpath" />
 
+import WeatherPage from '../../pageobjects/wheatherpage';
+import '../../support/commands';
+
+
 describe('uiTests', function () {
 
-  /* 
-    1. Please note, i have done such kind of framework using Page object model in Java and testNG  and Cucumber
-    2. Usually we make actions and elements on POM
-    3. also about the Locaiton verification - in selenium we can set the browser capabilities to change the permisssion on browsers,  
-      but not sure how to do it in JS and cypress 
-    4. I am also not sure how to do the mocking by creating a mock server    
-    */
-
   it('verify static element', () => {
-    cy.visit("http://localhost:3000/weather")
-    cy.get("h1[class$='title has-text-centered']").should('have.text', 'Dashboard')
-    cy.get("a[href='/weather/settings']").contains('Settings')
-    cy.get("a[href='/weather/settings']").click()
-    cy.xpath("//h2[normalize-space()='Locations']").contains('Locations')
-    cy.xpath("//p[normalize-space()='Select the locations you want to see']").contains('see')
-    cy.xpath("//button[contains(text(),'➕ Add new location')]").contains('Add new')
-    cy.xpath("//h2[normalize-space()='Units']").contains('Units')
-    cy.xpath("//p[normalize-space()='Select the unit system of your preference']").contains('your preference');
-    cy.xpath("//div[@class='buttons']//button[1]").contains('Metric');
-    cy.xpath("//div[@class='buttons']//button[2]").contains('Imperial');
+    var wp = new WeatherPage();
+    wp.visit();
+    wp.verifyDashboardTitle();
+    wp.verifySettingsLink();
+    wp.clickSettingsLink();
+    wp.verifyLocationsTitle();
+    wp.verifyLocationsDescription();
+    wp.verifyAddNewLocationButton();
+    wp.verifyUnitsTitle();
+    wp.verifyUnitsDescription();
+    wp.verifyMetricButton();
+    wp.verifyImperialButton();
+
   })
-  // it('verify  that application can use the current location', () => {
-  //   cy.window().then((win) => {
-  //     // Set the location manually
-  //     win.navigator.geolocation.getCurrentPosition = (success) => {
-  //       const position = { coords: { latitude: 60.2838578, longitude: 11.1728733 } };
-  //       success(position);
-  //     };
-  //   });
-  //   cy.visit("http://localhost:3000/weather")
-  //   cy.xpath("//div[normalize-space()='Råholt']").contains('Råholt')
-  // })
-  it('verify  that application can use the current location', () => {
-    cy.fail("I could not verify that test")
-  })
-  it('Verify that the user can add/remove new geographical locations', () => {
-    cy.visit("http://localhost:3000/weather")
-    cy.get("a[href='/weather/settings']").click()
-    cy.window().then((win) => {
-      cy.stub(win, 'prompt').returns('Oslo')
-    })
-    cy.xpath("//button[contains(text(),'➕ Add new location')]").click()
-    cy.xpath("//a[normalize-space()='Back to Dashboard']").click()
-    if (cy.xpath("//div[normalize-space()='Oslo']").contains("Oslo")) {
+  it('should be able to use the current location', () => {
+    cy.visitWithLocationPermission("http://localhost:3000/weather")
+    // I have found one method on the internet, but it still does not work  : visitWithLocationPermission, i have added in custom command
+    Cypress.Commands.add('visitWithLocationPermission', (url) => {
+      cy.window().then((win) => {
+        cy.stub(win.navigator.permissions, 'query').resolves({ state: 'granted' });
+      });
+
+      cy.visit(url);
+    });
+    if (cy.xpath("//div[normalize-space()='Råholt']").contains("Råholt")) {
       cy.log("Element exists - so application is capable to add a new location")
     }
-    cy.get("a[href='/weather/settings']").click()
-    cy.xpath("//button[@aria-label='Remove Oslo']").click()
-    cy.xpath("//a[normalize-space()='Back to Dashboard']").click()
-    cy.wait(5000);
     cy.get('body')
       .invoke('text')
       .then(text => {
-        cy.wrap(text).should('not.include', "Oslo");
+        cy.log(text)
       });
-  })
-  it.only('should be able to change the unit', () => {
+  });
+
+  it('Verify that the user can add/remove new geographical locations', () => {
     cy.visit("http://localhost:3000/weather")
-    cy.get("a[href='/weather/settings']").contains('Settings').click()    
-    cy.xpath("//section[2]//div[1]//button[1]").click()
-    cy.xpath("//a[normalize-space()='Back to Dashboard']").click()
-    cy.wait(5000);    
-    cy.get('body')
-      .invoke('text')
-      .then(text => {
-        cy.wrap(text).should('include', "°C");
-      });
+    var wp = new WeatherPage();
+    wp.clickSettingsLink();
+    wp.addNewLocation('Oslo');
+    wp.navigateToDashboard();
+    wp.verifyLocationAdded('Oslo');
+
+    wp.clickSettingsLink();
+    wp.removeLocation('Oslo');
+    wp.navigateToDashboard();
+    wp.verifyLocationNotPresent('Oslo');
+  })
+
+
+  it('should be able to change the unit', () => {
+    cy.visit("http://localhost:3000/weather")
+    var wp = new WeatherPage();
+    wp.clickSettingsLink();
+    wp.ClickCheckboxUnit();
+    wp.navigateToDashboard();
+    cy.wait(5000);
+    wp.verifyTemperatureUnit();
   })
 });
