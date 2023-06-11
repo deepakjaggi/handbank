@@ -1,3 +1,5 @@
+//http://localhost:3001/api/mockOslo
+
 const express = require('express');
 const app = express();
 
@@ -58,3 +60,4 @@ const port = 3001;
 app.listen(port, () => {
   console.log(`Mock server is running on port ${port}`);
 });
+

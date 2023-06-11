@@ -1,3 +1,4 @@
+npm install react-scripts --save-dev
 npm install 
 npm init
 npm install react react-dom --save 
@@ -16,7 +17,6 @@ npm i cypress-browser-permissions --save-dev
 
 npm config set proxy http://your-proxy-url:your-proxy-port
 npm install --save-dev @types/cypress
-//npm install class-transformer
 npm install msw --save-dev
 
 

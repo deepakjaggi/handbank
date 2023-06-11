@@ -1,27 +1,29 @@
-# How to
-
-## Run the application
-
-- Execute `npm start` command
-- Open [http://localhost:3000/weather](http://localhost:3000/weather) to view it in the browser
-
-## Run the tests
-
-- Execute `npm test` command
-
-## Run the tests in parallel
-
-- Execute 'npm run test:parallel'  -- by default headless
-- npx cypress open - to run manually
-- To verify the mock server, go to Mock server directoy in terminal and enter this command : 
-- npm init -y
-- npm install express
-- node server.js
+git clone https://github.com/deepakjaggi/handbank.git
+Open VS CODE
+Open workspace from file : *Your windows directory*\handbank\senior-qa-challenge-main.code-workspace
+npm install react react-dom
+npm install react-scripts --save-dev
+npm install cypress --save -dev
+npm install -D cypress-xpath
+npm install --save-dev @types/cypress
+npm start
+npx cypress open
+select Electron browser
+and run all tests
 -------------
+To run in parallel
+    npm run test:parallel
+-------------
+To Setup mock server:
+    npm init -y
+    npm install express
+    Go to this directory : 
+    cd .\cypress\
+    cd .\mock-server\
+    node server.js
+    http://localhost:3001/api/mockOslo
+-----------
 
-#Results
-1. I could not solve the test case where we want to verify that application can use the location, i tried to do some stubing but thats fake
-2. To verify the mock server resonse : http://localhost:3001/api/mockOslo  -- Please hit this only after executing mock server commands
 
 
 
