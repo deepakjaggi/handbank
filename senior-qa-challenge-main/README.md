@@ -15,5 +15,11 @@
 - npx cypress open - to run manually
 -------------
 
+#Results
+1. I could not solve the test case where we want to verify that application can use the location, i tried to do some stubing but thats fake
+2. I did not understand where you want me to create mock server end point ? In the project it self or in Postman or other tool ?
+
+
+
 
 
