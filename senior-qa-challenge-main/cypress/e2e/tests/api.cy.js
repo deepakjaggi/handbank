@@ -70,13 +70,7 @@ const mkedResponse = {
 
 describe('apiTests', function () {
 
-    /* 
-    1. Please note, i have done such kind of frameworok in cucumber and java, where you an directly parse/Maps using hashmaps. 
-    2. We could have also made the methods for automatic GET, POST etc .. 
-    3. Responses could have been mapped to Object/class -- I have added one test API-Tests-UsingJsonMapper    
-    */
-
-    //part of before hook
+   //part of before hook
     beforeEach(function () {
         //access fixture data
         cy.fixture('testDataNorway.json').then(function (x) {
