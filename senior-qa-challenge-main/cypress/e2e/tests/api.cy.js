@@ -4,6 +4,13 @@ let testDataPort;
 
 describe('apiTests', function () {
 
+    /* 
+    1. Please note, i have done such kind of frameworok in cucumber and java, where you an directly parse/Maps using hashmaps. 
+    2. We could have also made the methods for automatic GET, POST etc .. 
+    3. Responses could have been mapped to Object/class.
+    4. I do not know as of now how to do it in JS and cypress, but it should be doable if given more time.
+    */
+
     //part of before hook
     beforeEach(function () {
         //access fixture data

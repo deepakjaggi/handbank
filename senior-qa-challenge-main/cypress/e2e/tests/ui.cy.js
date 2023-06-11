@@ -2,6 +2,15 @@
 /// <reference types="cypress-xpath" />
 
 describe('uiTests', function () {
+
+  /* 
+    1. Please note, i have done such kind of framework using Page object model in Java and testNG  and Cucumber
+    2. Usually we make actions and elements on POM
+    3. also about the Locaiton verification - in selenium we can set the browser capabilities to change the permisssion on browsers,  
+      but not sure how to do it in JS and cypress 
+    4. I am also not sure how to do the mocking by creating a mock server    
+    */
+
   it('verify static element', () => {
     cy.visit("http://localhost:3000/weather")
     cy.get("h1[class$='title has-text-centered']").should('have.text', 'Dashboard')
