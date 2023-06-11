@@ -27,7 +27,7 @@ describe('uiTests', function () {
   })
 
   //I could not solve this test case --- not sure  how to achieve this, in selenium wehave browser capabilities where we can set location access = true, not sure here, how to do so  
-  it.only('TC2 -- should be able to use the current location', () => {
+  it('TC2 -- should be able to use the current location', () => {
     cy.visitWithLocationPermission("http://localhost:3000/weather")
     // I have found one method on the internet, but it still does not work  : visitWithLocationPermission, i have added in custom command
     Cypress.Commands.add('visitWithLocationPermission', (url) => {
