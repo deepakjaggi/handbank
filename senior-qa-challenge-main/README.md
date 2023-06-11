@@ -8,4 +8,12 @@
 ## Run the tests
 
 - Execute `npm test` command
+
+## Run the tests in parallel
+
+- Execute 'npm run test:parallel'  -- by default headless
+- npx cypress open - to run manually
 -------------
+
+
+
