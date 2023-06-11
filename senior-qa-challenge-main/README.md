@@ -13,6 +13,10 @@
 
 - Execute 'npm run test:parallel'  -- by default headless
 - npx cypress open - to run manually
+- To verify the mock server, go to Mock server directoy in terminal and enter this command : 
+- npm init -y
+- npm install express
+- node server.js
 -------------
 
 #Results
