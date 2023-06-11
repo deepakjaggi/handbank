@@ -5,9 +5,12 @@ import WeatherPage from '../../pageobjects/wheatherpage';
 import '../../support/commands';
 
 
+
+
 describe('uiTests', function () {
 
-  it('verify static element', () => {
+
+  it('TC1 -- verify static element', () => {
     var wp = new WeatherPage();
     wp.visit();
     wp.verifyDashboardTitle();
@@ -20,9 +23,10 @@ describe('uiTests', function () {
     wp.verifyUnitsDescription();
     wp.verifyMetricButton();
     wp.verifyImperialButton();
-
   })
-  it('should be able to use the current location', () => {
+
+  //I could not solve this test case --- not sure  how to achieve this, in selenium wehave browser capabilities where we can set location access = true, not sure here, how to do so  
+  it('TC2 -- should be able to use the current location', () => {
     cy.visitWithLocationPermission("http://localhost:3000/weather")
     // I have found one method on the internet, but it still does not work  : visitWithLocationPermission, i have added in custom command
     Cypress.Commands.add('visitWithLocationPermission', (url) => {
@@ -42,7 +46,7 @@ describe('uiTests', function () {
       });
   });
 
-  it('Verify that the user can add/remove new geographical locations', () => {
+  it('TC3 -- Verify that the user can add/remove new geographical locations', () => {
     cy.visit("http://localhost:3000/weather")
     var wp = new WeatherPage();
     wp.clickSettingsLink();
@@ -57,7 +61,7 @@ describe('uiTests', function () {
   })
 
 
-  it('should be able to change the unit', () => {
+  it('TC4 -- should be able to change the unit', () => {
     cy.visit("http://localhost:3000/weather")
     var wp = new WeatherPage();
     wp.clickSettingsLink();
@@ -66,4 +70,5 @@ describe('uiTests', function () {
     cy.wait(5000);
     wp.verifyTemperatureUnit();
   })
+
 });

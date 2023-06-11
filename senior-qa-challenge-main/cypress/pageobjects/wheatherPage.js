@@ -49,6 +49,7 @@ export default class WeatherPage {
     }
   
     addNewLocation(location) {
+      //This is the way of handling alerts with inputs
       cy.window().then((win) => {
         cy.stub(win, 'prompt').returns(location);
       });
