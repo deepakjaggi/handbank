@@ -9,8 +9,7 @@ describe('apiTests', function () {
     /* 
     1. Please note, i have done such kind of frameworok in cucumber and java, where you an directly parse/Maps using hashmaps. 
     2. We could have also made the methods for automatic GET, POST etc .. 
-    3. Responses could have been mapped to Object/class.
-    4. I do not know as of now how to do it in JS and cypress, but it should be doable if given more time.
+    3. Responses could have been mapped to Object/class -- I have added one test API-Tests-UsingJsonMapper    
     */
 
     //part of before hook
@@ -51,8 +50,7 @@ describe('apiTests', function () {
                 cy.log(rootdataObject.weather[0].description)
 
             })
-
-        //const rootInstance = plainToClass(Root, response); --I was not able to install this NPM otherwise it could be directly mapped to a class.
+            //const rootInstance = plainToClass(Root, response); --I was not able to install this NPM otherwise it could be directly mapped to a class.
     });
     it('API-Tests-2', function () {
         var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + this.testDataBerlin.lat + "&lon=" + this.testDataBerlin.lon + "&units=Metric&appid=eb8a70f875f4e4baabc1399cec36e4b6"
