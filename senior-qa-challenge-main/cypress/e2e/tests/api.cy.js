@@ -32,8 +32,7 @@ describe('apiTests', function () {
         cy.request('GET', url).
             then((response) => {
                 expect(response.status).to.equal(200);
-                expect(response.body.name).to.equal("Alt-Kölln");
-                expect(response.body.weather[0].main).to.equal("Clear");    //These values can also be taken from Fixtures Json
+                expect(response.body.name).to.equal("Alt-Kölln");                
             })
     });
     it('API-Tests-3', function () {

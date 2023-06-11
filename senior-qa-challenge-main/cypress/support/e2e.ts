@@ -50,3 +50,4 @@ declare namespace Cypress {
     }
   }
   require('cypress-xpath')
+

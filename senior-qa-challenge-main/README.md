@@ -9,12 +9,3 @@
 
 - Execute `npm test` command
 -------------
-
-DJ 
-
-npm install
-npm -init -y
-npm install react react-dom --save 
-npm install cypress --save-dev
-npm start
-

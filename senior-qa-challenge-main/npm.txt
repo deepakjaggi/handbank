@@ -12,6 +12,7 @@ npx cypress open
 
 npx cypress run --spec cypress\e2e\api_tests\handles.cy.js
 npm install -D cypress-xpath
+npm i cypress-browser-permissions --save-dev
 
 
 
