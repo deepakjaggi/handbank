@@ -24,7 +24,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test:file1": "cypress run --spec 'cypress/e2e/tests/api.cy.js'",
+    "test:file2": "cypress run --spec 'cypress/e2e/tests/ui.cy.js'",
+    "test:parallel": "npm run test:file1 & npm run test:file2"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +55,7 @@
   "description": "## Run the application",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC"  
 }
+
+
