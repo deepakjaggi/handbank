@@ -65,4 +65,3 @@ class Coord {
       this.cod = cod;
     }
   }
-  
