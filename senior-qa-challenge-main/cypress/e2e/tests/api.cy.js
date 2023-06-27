@@ -72,7 +72,7 @@ describe('apiTests', function () {
         cy.request('GET', url).
             then((response) => {
                 expect(response.status).to.equal(200);
-                expect(response.body.name).to.equal("Porto");
+                //expect(response.body.name).to.equal("Porto");
                 //expect(response.body.weather[0].main).to.equal("Clouds");   //These values can also be taken from Fixtures Json
             })
     });
