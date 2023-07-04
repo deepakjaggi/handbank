@@ -1,7 +1,7 @@
 import { User } from "../../Models/User";
 
-function mapResponseToClass(responseData, ClassType) {    
-    return Object.assign(new ClassType(), responseData);    
+function mapResponseToClass(responseData, ClassType) {
+    return Object.assign(new ClassType(), responseData);
 }
 
 function apiRequest(method, url, requestData, ResponseClass) {
@@ -13,15 +13,10 @@ function apiRequest(method, url, requestData, ResponseClass) {
 
     if (requestData) {
         // If requestData is provided, it's assumed to be the request body
-        requestBody.body = requestData;      
-    }    
+        requestBody.body = requestData;
+    }
     // Make the request    
-    var responseBdy = cy.request(requestBody)
-    .then((response) => {
-        // Map the response to the output class and return it
-        return mapResponseToClass(response.body, ResponseClass);
-    });
-    return  responseBdy;
+    return cy.request(requestBody).then((response) => { return mapResponseToClass(response.body, ResponseClass) })
 }
 
 describe('ApiTestsUser', function () {
@@ -30,14 +25,14 @@ describe('ApiTestsUser', function () {
     user.job = "SE";
 
     //test case    
-    it('createUser', function () {        
+    it('createUser', function () {
         apiRequest('POST', 'https://reqres.in/api/users', user, User)
-        .then((userCreateResponse) => {
-            expect(userCreateResponse.name).to.equal(user.name);
-            //expect(userCreateResponse.name).to.equal("DJ");
-            expect(userCreateResponse.job).to.equal(user.job);            
-        });
-    });    
+            .then((userCreateResponse) => {
+                expect(userCreateResponse.name).to.equal(user.name);
+                //expect(userCreateResponse.name).to.equal("DJ");
+                expect(userCreateResponse.job).to.equal(user.job);
+            });
+    });
 });
 
 
