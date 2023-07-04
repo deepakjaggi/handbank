@@ -18,6 +18,8 @@ and run all tests
 -------------
 To run in parallel
 npm run test:parallel
+
+To run a specific file : npx cypress run --spec '.\cypress\e2e\tests\apiUsers.cy.js'
 -------------
 To Setup mock server:
 npm init -y
