@@ -16,11 +16,11 @@ function apiRequest(method, url, requestData, ResponseClass) {
         requestBody.body = requestData;      
     }    
     // Make the request    
-    var responseBdy = cy.request(requestBody)
-    .then((response) => {
-        // Map the response to the output class and return it
-        return mapResponseToClass(response.body, ResponseClass);
-    });
+    const responseBdy = cy.request(requestBody)
+        .then((response) => {
+            // Map the response to the output class and return it
+            return mapResponseToClass(response.body, ResponseClass);
+        });
     return  responseBdy;
 }
 
